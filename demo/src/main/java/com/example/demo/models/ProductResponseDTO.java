@@ -3,18 +3,20 @@ package com.example.demo.models;
 import java.util.Map;
 
 public class ProductResponseDTO {
+
     private String name;
     private Double popularityScore;
     private Double weight;
     private Map<String, String> images;
     private Double price;
-    private Double popularityRating; // Out of 5
+    private Double popularityRating;
 
     // Constructors
-    public ProductResponseDTO() {}
+    public ProductResponseDTO() {
+    }
 
-    public ProductResponseDTO(String name, Double popularityScore, Double weight, 
-                             Map<String, String> images, Double price, Double popularityRating) {
+    public ProductResponseDTO(String name, Double popularityScore, Double weight,
+            Map<String, String> images, Double price, Double popularityRating) {
         this.name = name;
         this.popularityScore = popularityScore;
         this.weight = weight;

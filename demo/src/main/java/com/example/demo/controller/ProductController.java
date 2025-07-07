@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,12 @@ import com.example.demo.services.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin(origins = "*") // Allow all origins for development
+@CrossOrigin(origins = "*")
 public class ProductController {
-    
+
     @Autowired
     private ProductService productService;
-    
+
     @GetMapping
     public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
         try {
@@ -34,7 +33,7 @@ public class ProductController {
             return ResponseEntity.internalServerError().build();
         }
     }
-    
+
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable int id) {
         try {
@@ -48,7 +47,7 @@ public class ProductController {
             return ResponseEntity.internalServerError().build();
         }
     }
-    
+
     @GetMapping("/filter")
     public ResponseEntity<List<ProductResponseDTO>> getFilteredProducts(
             @RequestParam(required = false) Double minPrice,
@@ -58,7 +57,7 @@ public class ProductController {
     ) {
         try {
             List<ProductResponseDTO> filteredProducts = productService.getFilteredProducts(
-                minPrice, maxPrice, minPopularity, maxPopularity
+                    minPrice, maxPrice, minPopularity, maxPopularity
             );
             return ResponseEntity.ok(filteredProducts);
         } catch (Exception e) {
@@ -66,7 +65,7 @@ public class ProductController {
             return ResponseEntity.internalServerError().build();
         }
     }
-    
+
     @GetMapping("/count")
     public ResponseEntity<Integer> getProductCount() {
         try {
@@ -77,7 +76,7 @@ public class ProductController {
             return ResponseEntity.internalServerError().build();
         }
     }
-    
+
     @PostMapping("/reload")
     public ResponseEntity<String> reloadProducts() {
         try {
